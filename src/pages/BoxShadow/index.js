@@ -49,6 +49,7 @@ function BoxShadow() {
   };
 
   const toggle = () => setopen(!open);
+  const reset = () => setstate(INITIAL_STATE);
 
   const copyToClipboard = () => {
     const ta = document.createElement('textarea');
@@ -111,7 +112,7 @@ function BoxShadow() {
                   <button
                     type="button"
                     className="button-p px-2 c-pointer underline"
-                    onClick={toggle}
+                    onClick={reset}
                   >
                     Reset
                   </button>
