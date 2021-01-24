@@ -1,3 +1,9 @@
+@media only screen and (min-width: 768px) {
+  .bshadow-container {
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+}
 
 .c-pointer {
   cursor: pointer;
@@ -14,19 +20,8 @@
   padding: 0;
 }
 
-
 .clipboard-alert {
-   position: fixed !important;
-   bottom: 0;
-   right: 15px;
+  position: fixed !important;
+  bottom: 0;
+  right: 15px;
 }
-
-
-@media only screen and (min-width: 768px) {
-
-  .bshadow-container {
-    max-height: 90vh;
-    overflow-y: auto;
-  }
-}
-

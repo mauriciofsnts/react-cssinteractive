@@ -1,17 +1,12 @@
 import React, { useState } from 'react';
 import {
-  ButtonGroup,
-  Col,
-  Container,
-  Row,
-  Button,
-  FormGroup,
-  Label,
-  Input,
-  CustomInput,
+  Col, Container, Row, FormGroup, Label, Input, CustomInput,
 } from 'reactstrap';
+
+import PageHeader from '../../components/PageHeader';
 import AlertComponent from '../../components/Alert';
 import RangeInput from '../../components/RangeInput';
+import CodePreview from '../../components/CodePreview';
 
 const INITIAL_STATE = {
   topleft: 0,
@@ -65,19 +60,6 @@ function BorderRadiusPage() {
   const reset = () => setstate(INITIAL_STATE);
   const toggle = () => setopen(!open);
 
-  const copyToClipboard = () => {
-    const ta = document.createElement('textarea');
-    const bxshadow = document.getElementById('codeBorderRadius').textContent;
-
-    ta.innerText = bxshadow;
-    document.body.appendChild(ta);
-    ta.select();
-    document.execCommand('copy');
-    ta.remove();
-
-    setcopied(true);
-  };
-
   const BODER_RADIUS = {
     height: 300,
     width: 300,
@@ -91,74 +73,42 @@ function BorderRadiusPage() {
     <Container>
       <Row style={{ height: '80vh' }}>
         <Col md={6} className="bshadow-container">
-          <h1 className="fs-2 text-center pt-3">Border radius</h1>
-
-          <p className="mt-2 fs-6">
-            A border-radius CSS generator that helps you quickly generate border-radius CSS
-            declarations for your website. It comes with many options and it demonstrates instantly
-          </p>
-
-          <Row noGutters className="pt-2 d-flex justify-content-between">
-            <h5>Platform</h5>
-
-            <ButtonGroup>
-              <Button color="secondary">Web</Button>
-              <Button color="primary">React</Button>
-            </ButtonGroup>
-          </Row>
-
-          <hr />
+          <PageHeader
+            title="Border radius"
+            description="A border-radius CSS generator that helps you quickly generate border-radius CSS
+            declarations for your website. It comes with many options and it demonstrates instantly"
+            reset={reset}
+            toggle={toggle}
+            hideCode={open}
+          />
 
           <Row>
             <Col md={12}>
-              <Row noGutters className="pb-3 d-flex justify-content-between">
-                <h5>Properties</h5>
-
-                <div className="d-flex  align-items-center">
-                  <button
-                    type="button"
-                    className="button-p px-2 c-pointer underline"
-                    onClick={toggle}
-                  >
-                    Show code
-                  </button>
-                  <button
-                    type="button"
-                    className="button-p px-2 c-pointer underline"
-                    onClick={reset}
-                  >
-                    Reset
-                  </button>
-                </div>
-              </Row>
-
-              {open && (
-                <Row noGutters className="p-3 bg-light rounded" onClick={copyToClipboard}>
-                  <p id="codeBorderRadius">
-                    border-radius:
-                    {' '}
-                    {`${state.topleft}px ${state.topright}px ${state.bottomleft}px ${state.bottomright}px`}
-                    ;
-                    <br />
-                    -webkit-border-radius:
-                    {' '}
-                    {`${state.topleft}px ${state.topright}px ${state.bottomleft}px ${state.bottomright}px`}
-                    ;
-                    <br />
-                    -moz-border-radius:
-                    {' '}
-                    {`${state.topleft}px ${state.topright}px ${state.bottomleft}px ${state.bottomright}px`}
-                    ;
-                    <br />
-                    border:
-                    {' '}
-                    {`${state.width}px ${state.style} ${state.color}`}
-                    ;
-                    <br />
-                    {`${state.includeBg ? `background: ${state.background};` : ''}`}
-                  </p>
-                </Row>
-              )}
+              <CodePreview open={open} copyCallback={setcopied}>
+                <>
+                  border-radius:
+                  {' '}
+                  {`${state.topleft}px ${state.topright}px ${state.bottomleft}px ${state.bottomright}px`}
+                  ;
+                  <br />
+                  -webkit-border-radius:
+                  {' '}
+                  {`${state.topleft}px ${state.topright}px ${state.bottomleft}px ${state.bottomright}px`}
+                  ;
+                  <br />
+                  -moz-border-radius:
+                  {' '}
+                  {`${state.topleft}px ${state.topright}px ${state.bottomleft}px ${state.bottomright}px`}
+                  ;
+                  <br />
+                  border:
+                  {' '}
+                  {`${state.width}px ${state.style} ${state.color}`}
+                  ;
+                  <br />
+                  {`${state.includeBg ? `background: ${state.background};` : ''}`}
+                </>
+              </CodePreview>
 
               <RangeInput
                 label="All Corners Radius"

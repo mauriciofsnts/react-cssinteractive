@@ -1,18 +1,12 @@
 import React, { useState } from 'react';
 import {
-  Container,
-  Row,
-  Col,
-  ButtonGroup,
-  Button,
-  FormGroup,
-  Label,
-  Input,
-  CustomInput,
+  Container, Row, Col, FormGroup, Label, Input, CustomInput,
 } from 'reactstrap';
 
 import RangeInput from '../../components/RangeInput';
 import AlertComponent from '../../components/Alert';
+import CodePreview from '../../components/CodePreview';
+import PageHeader from '../../components/PageHeader';
 import { hex2rgba } from '../../utils/helpers';
 
 const INITIAL_STATE = {
@@ -51,19 +45,6 @@ function BoxShadow() {
   const toggle = () => setopen(!open);
   const reset = () => setstate(INITIAL_STATE);
 
-  const copyToClipboard = () => {
-    const ta = document.createElement('textarea');
-    const bxshadow = document.getElementById('codeboxshadow').textContent;
-
-    ta.innerText = bxshadow;
-    document.body.appendChild(ta);
-    ta.select();
-    document.execCommand('copy');
-    ta.remove();
-
-    setcopied(true);
-  };
-
   const BOX_SHADOW = {
     boxShadow: `${state.horizontal}px ${state.vertical}px ${state.blur}px ${
       state.spread
@@ -78,73 +59,41 @@ function BoxShadow() {
     <Container>
       <Row style={{ height: '80vh' }}>
         <Col md={6}>
-          <h1 className="fs-2 text-center pt-3">Box shadow</h1>
-
-          <p className="mt-2 fs-6">
-            A box-shadow CSS generator that helps you quickly generate box-shadow CSS declarations
-            for your website. It comes with many options and it demonstrates instantly
-          </p>
-
-          <Row noGutters className="pt-2 d-flex justify-content-between">
-            <h5>Platform</h5>
-
-            <ButtonGroup>
-              <Button color="secondary">Web</Button>
-              <Button color="primary">React</Button>
-            </ButtonGroup>
-          </Row>
-
-          <hr />
+          <PageHeader
+            title="Box shadow"
+            description=" A box-shadow CSS generator that helps you quickly generate box-shadow CSS declarations
+            for your website. It comes with many options and it demonstrates instantly"
+            toggle={toggle}
+            reset={reset}
+            hideCode={open}
+          />
 
           <Row>
             <Col md={12}>
-              <Row noGutters className="pb-3 d-flex justify-content-between">
-                <h5>Properties</h5>
-
-                <div className="d-flex  align-items-center">
-                  <button
-                    type="button"
-                    className="button-p px-2 c-pointer underline"
-                    onClick={toggle}
-                  >
-                    Show code
-                  </button>
-                  <button
-                    type="button"
-                    className="button-p px-2 c-pointer underline"
-                    onClick={reset}
-                  >
-                    Reset
-                  </button>
-                </div>
-              </Row>
-
-              {open && (
-                <Row noGutters className="p-3 bg-light rounded" onClick={copyToClipboard}>
-                  <p id="codeboxshadow">
-                    box-shadow:
-                    {' '}
-                    {`${state.horizontal}px ${state.vertical}px ${state.blur}px ${
-                      state.spread
-                    }px ${hex2rgba(state.color, state.opacity)} ${state.inset ? 'inset' : ''}`}
-                    ;
-                    <br />
-                    -webkit-box-shadow:
-                    {' '}
-                    {`${state.horizontal}px ${state.vertical}px ${state.blur}px ${
-                      state.spread
-                    }px ${hex2rgba(state.color, state.opacity)} ${state.inset ? 'inset' : ''}`}
-                    ;
-                    <br />
-                    -moz-box-shadow:
-                    {' '}
-                    {`${state.horizontal}px ${state.vertical}px ${state.blur}px ${
-                      state.spread
-                    }px ${hex2rgba(state.color, state.opacity)} ${state.inset ? 'inset' : ''}`}
-                    ;
-                  </p>
-                </Row>
-              )}
+              <CodePreview open={open} copyCallback={setcopied}>
+                <>
+                  box-shadow:
+                  {' '}
+                  {`${state.horizontal}px ${state.vertical}px ${state.blur}px ${
+                    state.spread
+                  }px ${hex2rgba(state.color, state.opacity)} ${state.inset ? 'inset' : ''}`}
+                  ;
+                  <br />
+                  -webkit-box-shadow:
+                  {' '}
+                  {`${state.horizontal}px ${state.vertical}px ${state.blur}px ${
+                    state.spread
+                  }px ${hex2rgba(state.color, state.opacity)} ${state.inset ? 'inset' : ''}`}
+                  ;
+                  <br />
+                  -moz-box-shadow:
+                  {' '}
+                  {`${state.horizontal}px ${state.vertical}px ${state.blur}px ${
+                    state.spread
+                  }px ${hex2rgba(state.color, state.opacity)} ${state.inset ? 'inset' : ''}`}
+                  ;
+                </>
+              </CodePreview>
 
               <RangeInput
                 label="Horizontal Shadow Length"
