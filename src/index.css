@@ -5,6 +5,11 @@
   }
 }
 
+td,
+td > p {
+  font-size: 14px;
+}
+
 .c-pointer {
   cursor: pointer;
 }
@@ -24,4 +29,15 @@
   position: fixed !important;
   bottom: 0;
   right: 15px;
+}
+
+.flexItem {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  font-size: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
 }

@@ -40,7 +40,9 @@ function NavbarComponent({ history }) {
             Text shadow
           </NavItem>
           <NavItem className="mx-2">Gradientes</NavItem>
-          <NavItem className="mx-2">Flexbox</NavItem>
+          <NavItem className="mx-2 c-pointer" onClick={() => history.push(ROUTES.FLEXBOX)}>
+            Flexbox
+          </NavItem>
           <NavItem className="mx-2">Button Generator</NavItem>
         </Nav>
       </Collapse>
