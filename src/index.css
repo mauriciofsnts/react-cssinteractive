@@ -1,3 +1,4 @@
+
 .c-pointer {
   cursor: pointer;
 }
@@ -19,3 +20,13 @@
    bottom: 0;
    right: 15px;
 }
+
+
+@media only screen and (min-width: 768px) {
+
+  .bshadow-container {
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+}
+

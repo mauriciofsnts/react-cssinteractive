@@ -221,6 +221,7 @@ function BoxShadow() {
             </Col>
           </Row>
         </Col>
+
         <Col md={6} className="d-flex justify-content-center align-items-center">
           <div style={BOX_SHADOW} className="mb-5" />
         </Col>

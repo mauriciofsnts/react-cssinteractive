@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 
 import Navbar from '../../components/Navbar';
 
-const PlatformContainer = ({ children, fluid }) => (
-  <Container fluid={fluid}>
+const PlatformContainer = ({ children }) => (
+  <Container fluid="lg">
     <Row>
       <Navbar />
     </Row>
@@ -19,7 +19,6 @@ const PlatformContainer = ({ children, fluid }) => (
 
 PlatformContainer.propTypes = {
   children: PropTypes.node.isRequired,
-  fluid: PropTypes.bool.isRequired,
 };
 
 export default PlatformContainer;

@@ -17,7 +17,7 @@ function NavbarComponent({ history }) {
     <Navbar
       color="dark"
       className="w-100 text-white d-flex justify-content-center align-items-center"
-      expand="md"
+      expand="lg"
       dark
     >
       <NavbarBrand
@@ -33,7 +33,9 @@ function NavbarComponent({ history }) {
           <NavItem className="mx-2 c-pointer" onClick={() => history.push(ROUTES.BOXSHADOW)}>
             Box shadow
           </NavItem>
-          <NavItem className="mx-2">Border radius</NavItem>
+          <NavItem className="mx-2 c-pointer" onClick={() => history.push(ROUTES.BORDERRADIUS)}>
+            Border radius
+          </NavItem>
           <NavItem className="mx-2">Text shadow</NavItem>
           <NavItem className="mx-2">Gradientes</NavItem>
           <NavItem className="mx-2">Flexbox</NavItem>
